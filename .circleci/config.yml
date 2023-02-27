@@ -345,8 +345,8 @@ jobs:
             --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
             --output text)
-
             export API_URL=http://${BACKEND_PUBLIC_IP}:3030
+            echo "API_URL= ${API_URL}"
             if curl -s $API_URL/api/status | grep "ok"
             then
                 exit 0
@@ -364,8 +364,8 @@ jobs:
             else
               exit 2
             fi
-      - destroy-enviroment
-      - revert-migrations
+      # - destroy-enviroment
+      # - revert-migrations
 #   cloudfront-update:
 #     docker:
 #       # Docker image here that supports AWS CLI
