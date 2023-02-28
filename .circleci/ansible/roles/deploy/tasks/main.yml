@@ -22,15 +22,11 @@
 
 
 - name: "install npm and nodejs"
-  become: yes
-  tasks:
-    - name: Update apt repo and cache
-      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
-    - name: Install nodejs and npm
-      apt:
-        pkg:
-          - nodejs
-          - npm  
+  become: yes  
+  apt:
+   pkg:
+    - nodejs
+    - npm  
 
 - name: "install pm2"
   become: yes
