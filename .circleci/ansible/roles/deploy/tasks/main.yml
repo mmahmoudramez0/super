@@ -21,12 +21,18 @@
     name: python3
 
 
-- name: "install npm and nodejs"
-  become: yes  
+- name: "Add NodeJS from NodaSource"
+  become: true
+  shell: |
+    curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash 
+
+- name: "Install NodeJS 13"
+  become: true
   apt:
-   pkg:
-    - nodejs
-    - npm  
+    name: ["nodejs"]
+    state: latest 
+    update_cache: yes
+
 
 - name: "install pm2"
   become: yes
