@@ -31,7 +31,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.medium
-      SubnetId: subnet-0e56ddb4832250b14
+      # SubnetId: subnet-0e56ddb4832250b14
       SecurityGroups:
         - Ref: InstanceSecurityGroup
       KeyName: udacity # If you use another key pair name, you should change this value to match.
