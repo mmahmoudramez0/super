@@ -21,12 +21,19 @@
     name: python3
 
 
-- name: "install dependencies."
+- name: "install Nodejs."
   become: yes
   apt:
-    name: ["nodejs", "npm"]
+    name: nodejs
     state: latest
     update_cache: yes
+
+- name: "install npm."
+  become: yes
+  apt:
+    name: npm
+    state: latest
+    update_cache: yes    
 
 - name: "install pm2"
   become: yes
