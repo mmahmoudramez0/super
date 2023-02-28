@@ -30,7 +30,6 @@ Resources:
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      VpcId: vpc-0588d19966f3bc37b
       InstanceType: t2.medium
       SecurityGroups:
         - Ref: InstanceSecurityGroup
