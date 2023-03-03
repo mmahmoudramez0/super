@@ -36,7 +36,7 @@ commands:
                 sudo add-apt-repository --yes --update ppa:ansible/ansible
                 sudo apt install ansible -y
 
-    destroy-enviroment:
+    destroy-environment:
       description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
       parameters:
         Workflow_ID:
@@ -204,7 +204,7 @@ jobs:
           paths:
             - project/.circleci/ansible/inventory.txt
 
-      - destroy-enviroment
+      - destroy-environment
 
   configure-infrastructure:
     docker:
@@ -222,7 +222,7 @@ jobs:
             cd .circleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt configure-server.yml
-      - destroy-enviroment
+      - destroy-environment
       # Here's where you willd adadd some code to rollback on failure      
 
   run-migrations:
@@ -250,7 +250,7 @@ jobs:
             else
               echo "No migrations are pending" 
             fi
-      - destroy-enviroment
+      - destroy-environment
       - revert-migrations    
 
   deploy-frontend:
@@ -285,7 +285,7 @@ jobs:
            npm run build
            aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
 
-      - destroy-enviroment
+      - destroy-environment
       - revert-migrations        
 
   deploy-backend:
@@ -330,7 +330,7 @@ jobs:
             cd .circleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
-      - destroy-enviroment
+      - destroy-environment
       - revert-migrations
 
   smoke-test:
@@ -366,7 +366,7 @@ jobs:
             else
               exit 1
             fi
-      - destroy-enviroment
+      - destroy-environment
       - revert-migrations
   cloudfront-update:
     docker:
