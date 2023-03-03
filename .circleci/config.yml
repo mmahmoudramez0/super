@@ -321,10 +321,10 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            export TYPEORM_MIGRATIONS_DIR=./migrations
-            export TYPEORM_ENTITIES=./modules/domain/**/*.entity.ts
-            export TYPEORM_ENTITIES=./modules/domain/**/*.entity.js
-            export TYPEORM_MIGRATIONS=./migrations/*.ts
+            sudo export TYPEORM_MIGRATIONS_DIR=./migrations
+            sudo export TYPEORM_ENTITIES=./modules/domain/**/*.entity.ts
+            sudo export TYPEORM_ENTITIES=./modules/domain/**/*.entity.js
+            sudo export TYPEORM_MIGRATIONS=./migrations/*.ts
 
 
             cd .circleci/ansible
