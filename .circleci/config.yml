@@ -174,7 +174,7 @@ jobs:
       - scan-backend
     filters:
       branches:
-        only: [master]
+        only: master
     docker:
       - image: cimg/node:13.8.0
     steps:
