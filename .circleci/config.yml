@@ -168,11 +168,11 @@ jobs:
 
   deploy-infrastructure:
     requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+    docker:
+      - image: cimg/node:13.8.0
     filters:
       branches:
           only: [master]
-    docker:
-      - image: cimg/node:13.8.0
     steps:
       - checkout
       - install_awscli
