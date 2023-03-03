@@ -167,10 +167,6 @@ jobs:
              npm audit --audit-level=critical
 
   deploy-infrastructure:
-    # requires: [test-frontend, test-backend, scan-frontend, scan-backend]
-    # filters:
-    #     branches:
-    #         only: [master]
     docker:
       - image: cimg/node:13.8.0
     steps:
